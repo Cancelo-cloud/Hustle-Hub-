@@ -292,97 +292,68 @@
                 box-shadow: none;
             }
         }
-        /* === Mobile / small-screen tuned styles ===
-           Paste at the end of your existing <style> block
-        */
-        @media (max-width: 600px) {
-          /* general page spacing */
-          html, body { font-size: 16px; } /* ensure predictable base */
+                /* Mobile compression - place inside existing <style> block near the end */
+        @media (max-width: 768px) {
+          html, body { font-size: 16px; } /* base for rem/em calculations */
           body {
-            padding: 12px;
-            background-attachment: scroll; /* fixed can cause issues on mobile */
-            background-position: top center;
+            padding: 8px !important;
+            background-position: top center !important;
+            background-attachment: scroll !important;
           }
         
-          /* make overlay lighter and remove heavy blur on phones */
-          body::before {
-            background: rgba(0,0,0,0.35);   /* less dark so background shows */
-            backdrop-filter: none;          /* remove blur for clarity on small screens */
-            z-index: 0;
-          }
-        
-          /* container sizing and visual tweaks */
+          /* container and content compression */
           .container {
-            position: relative;
-            z-index: 1;
-            max-width: 100%;
-            margin: 10px auto;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.95); /* slightly translucent so bg shows through */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            overflow: hidden;
+            max-width: 100% !important;
+            margin: 8px auto !important;
+            border-radius: 10px !important;
+            background: rgba(255,255,255,0.96) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18) !important;
           }
+          .content { padding: 12px !important; }
+          .overview, .setup-card, .strategy-card, .detail-item {
+            padding: 10px !important;
+          }
+          .details, .setup-grid, .strategy-grid { gap: 8px !important; }
         
           /* header compression */
           .header {
-            padding: 22px 18px;
+            padding: 14px 12px !important;
+            text-align: center;
           }
         
-          /* responsive heading sizes (scales automatically) */
+          /* make H1 much smaller and tighter on mobile */
           .header h1 {
-            /* clamp(min, preferred, max) keeps things readable and prevents huge text */
-            font-size: clamp(1.4rem, 7.5vw, 2rem);
-            line-height: 1.02;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-            /* let text try to fit on fewer lines; still wraps if too long */
-            word-break: normal;
+            font-size: 1.2rem !important;       /* small but readable */
+            line-height: 1.05 !important;
+            font-weight: 700 !important;
+            margin-bottom: 6px !important;
+            letter-spacing: -0.3px !important;
+            word-break: normal !important;
+            white-space: normal !important;
           }
         
           .header .subtitle {
-            font-size: clamp(0.95rem, 4.5vw, 1.05rem);
-            opacity: 0.95;
-            margin-bottom: 4px;
+            font-size: 0.95rem !important;
+            margin-bottom: 4px !important;
           }
-        
           .header .tagline {
-            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-            opacity: 0.9;
+            font-size: 0.85rem !important;
           }
         
-          /* reduce content padding & section spacing */
-          .content { padding: 16px; }
-          .overview { padding: 16px; margin-bottom: 18px; }
-          .section { margin-bottom: 18px; }
-          .setup-card, .strategy-card, .detail-item {
-            padding: 12px;
-          }
+          /* smaller badges and lists */
+          .team-badge { padding: 8px 14px !important; font-size: 0.9rem !important; }
+          .setup-card h4, .strategy-card h4 { font-size: 0.95rem !important; }
         
-          /* tighten grids */
-          .details, .setup-grid, .strategy-grid {
-            gap: 10px;
-          }
+          /* reduce metrics and footer size */
+          .metrics { padding: 14px !important; }
+          .footer { padding: 14px 12px !important; font-size: 0.9rem !important; }
+        }
         
-          /* reduce list spacing */
-          .setup-card li, .metrics li, .next-steps li {
-            padding: 6px 0;
-          }
-        
-          /* smaller metrics block */
-          .metrics { padding: 18px; }
-        
-          /* footer smaller */
-          .footer { padding: 18px 16px; }
-        
-          /* Optional: if you really need the main header on a single line,
-             uncomment the next block. Warning: possible overflow on very small screens. */
-          /*
-          .header h1 {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          */
+        /* Extra-tight rules for very small phones */
+        @media (max-width: 420px) {
+          .header h1 { font-size: 1.0rem !important; } /* squeeze further on small devices */
+          .header { padding: 12px 10px !important; }
+          .content { padding: 10px !important; }
         }
     </style>
 </head>
