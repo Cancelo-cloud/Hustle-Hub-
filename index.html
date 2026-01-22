@@ -293,6 +293,98 @@
             }
         }
     </style>
+            /* === Mobile / small-screen tuned styles ===
+           Paste at the end of your existing <style> block
+        */
+        @media (max-width: 600px) {
+          /* general page spacing */
+          html, body { font-size: 16px; } /* ensure predictable base */
+          body {
+            padding: 12px;
+            background-attachment: scroll; /* fixed can cause issues on mobile */
+            background-position: top center;
+          }
+        
+          /* make overlay lighter and remove heavy blur on phones */
+          body::before {
+            background: rgba(0,0,0,0.35);   /* less dark so background shows */
+            backdrop-filter: none;          /* remove blur for clarity on small screens */
+            z-index: 0;
+          }
+        
+          /* container sizing and visual tweaks */
+          .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            margin: 10px auto;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.95); /* slightly translucent so bg shows through */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            overflow: hidden;
+          }
+        
+          /* header compression */
+          .header {
+            padding: 22px 18px;
+          }
+        
+          /* responsive heading sizes (scales automatically) */
+          .header h1 {
+            /* clamp(min, preferred, max) keeps things readable and prevents huge text */
+            font-size: clamp(1.4rem, 7.5vw, 2rem);
+            line-height: 1.02;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+            /* let text try to fit on fewer lines; still wraps if too long */
+            word-break: normal;
+          }
+        
+          .header .subtitle {
+            font-size: clamp(0.95rem, 4.5vw, 1.05rem);
+            opacity: 0.95;
+            margin-bottom: 4px;
+          }
+        
+          .header .tagline {
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+            opacity: 0.9;
+          }
+        
+          /* reduce content padding & section spacing */
+          .content { padding: 16px; }
+          .overview { padding: 16px; margin-bottom: 18px; }
+          .section { margin-bottom: 18px; }
+          .setup-card, .strategy-card, .detail-item {
+            padding: 12px;
+          }
+        
+          /* tighten grids */
+          .details, .setup-grid, .strategy-grid {
+            gap: 10px;
+          }
+        
+          /* reduce list spacing */
+          .setup-card li, .metrics li, .next-steps li {
+            padding: 6px 0;
+          }
+        
+          /* smaller metrics block */
+          .metrics { padding: 18px; }
+        
+          /* footer smaller */
+          .footer { padding: 18px 16px; }
+        
+          /* Optional: if you really need the main header on a single line,
+             uncomment the next block. Warning: possible overflow on very small screens. */
+          /*
+          .header h1 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          */
+        }
 </head>
 <body>
     <div class="container">
